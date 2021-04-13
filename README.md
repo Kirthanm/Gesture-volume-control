@@ -1,6 +1,8 @@
 # Gesture-volume-control
 
 **ML Pipeline**
+![hand_crops](https://user-images.githubusercontent.com/76951087/114564717-372e4380-9c8e-11eb-8770-bc21964b3ed5.png)
+![hand_landmarks](https://user-images.githubusercontent.com/76951087/114564728-3a293400-9c8e-11eb-9d32-311a52a802e8.png)
 MediaPipe Hands utilizes an ML pipeline consisting of multiple models working together: A palm detection model that operates on the full image and returns an oriented hand bounding box. A hand landmark model that operates on the cropped image region defined by the palm detector and returns high-fidelity 3D hand keypoints. This strategy is similar to that employed in our MediaPipe Face Mesh solution, which uses a face detector together with a face landmark model.
 
 Providing the accurately cropped hand image to the hand landmark model drastically reduces the need for data augmentation (e.g. rotations, translation and scale) and instead allows the network to dedicate most of its capacity towards coordinate prediction accuracy. In addition, in our pipeline the crops can also be generated based on the hand landmarks identified in the previous frame, and only when the landmark model could no longer identify hand presence is palm detection invoked to relocalize the hand.
